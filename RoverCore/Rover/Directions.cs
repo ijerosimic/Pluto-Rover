@@ -13,7 +13,7 @@ public static class Directions
         {
             Commands.Right => TurnRight(currentDirection),
             Commands.Left => TurnLeft(currentDirection),
-            _ => throw new IndexOutOfRangeException("Unrecognized rover rotation command.")
+            _ => throw new ArgumentOutOfRangeException(nameof(rotation),"Unrecognized rover rotation command.")
         };
     }
     
@@ -24,7 +24,7 @@ public static class Directions
             East => North,
             South => East,
             West => South,
-            _ => throw new IndexOutOfRangeException("Unrecognized rover direction when turning left.")
+            _ => throw new ArgumentOutOfRangeException(nameof(currentDirection),"Unrecognized rover direction when turning left.")
         };
 
     private static char TurnRight(char currentDirection) =>
@@ -34,6 +34,6 @@ public static class Directions
             East => South,
             South => West,
             West => North,
-            _ => throw new IndexOutOfRangeException("Unrecognized rover direction when turning left.")
+            _ => throw new ArgumentOutOfRangeException(nameof(currentDirection), "Unrecognized rover direction when turning left.")
         };
 }
